@@ -1,1 +1,1 @@
-# Trustnote Supernode
+# RingNetwork Supernode

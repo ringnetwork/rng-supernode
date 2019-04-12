@@ -1,10 +1,10 @@
 require("../start");
-var eventBus = require("trustnote-pow-common/base/event_bus");
-var objectHash = require('trustnote-pow-common/base/object_hash.js');
+var eventBus = require("rng-core/base/event_bus");
+var objectHash = require('rng-core/base/object_hash.js');
 
 eventBus.on('headless_wallet_ready', function(){
     var headless = require('../lib/wallet')
-    var wallet = require("trustnote-pow-common/wallet/wallet")
+    var wallet = require("rng-core/wallet/wallet")
 
     wallet.sendMultiPayment({
         wallet: '4b8fWkZSYYiaVrpvY9fFGF+9XoIhy614twyR3+BM7Zg=',

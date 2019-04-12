@@ -2,15 +2,15 @@
 "use strict";
 require('../start');
 var headlessWallet = require('../lib/wallet.js');
-var eventBus = require('trustnote-pow-common/base/event_bus.js');
+var eventBus = require('rng-core/base/event_bus.js');
 
 function onError(err){
 	throw Error(err);
 }
 
 function createPayment(){
-	var composer = require('trustnote-pow-common/unit/composer.js');
-	var network = require('trustnote-pow-common/p2p/network.js');
+	var composer = require('rng-core/unit/composer.js');
+	var network = require('rng-core/p2p/network.js');
 	var callbacks = composer.getSavingCallbacks({
 		ifNotEnoughFunds: onError,
 		ifError: onError,

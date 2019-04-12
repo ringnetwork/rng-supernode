@@ -2,16 +2,16 @@
 "use strict";
 var Mnemonic = require('bitcore-mnemonic');
 
-var constants = require('trustnote-pow-common/config/constants.js');
-var conf = require('trustnote-pow-common/config/conf.js');
-var desktopApp = require('trustnote-pow-common/base/desktop_app.js');
-var db = require('trustnote-pow-common/db/db.js');
-var eventBus = require('trustnote-pow-common/base/event_bus.js');
-var round = require('trustnote-pow-common/pow/round.js');
-var pow = require('trustnote-pow-common/pow/pow.js');
-var deposit = require('trustnote-pow-common/sc/deposit');
-var supernode = require('trustnote-pow-common/wallet/supernode');
-var byzantine = require('trustnote-pow-common/mc/byzantine');
+var constants = require('rng-core/config/constants.js');
+var conf = require('rng-core/config/conf.js');
+var desktopApp = require('rng-core/base/desktop_app.js');
+var db = require('rng-core/db/db.js');
+var eventBus = require('rng-core/base/event_bus.js');
+var round = require('rng-core/pow/round.js');
+var pow = require('rng-core/pow/pow.js');
+var deposit = require('rng-core/sc/deposit');
+var supernode = require('rng-core/wallet/supernode');
+var byzantine = require('rng-core/mc/byzantine');
 var _ = require('lodash');
 
 require('./lib/relay.js');
@@ -41,7 +41,7 @@ function onMiningError(err){
 }
 
 function checkTrustMEAndStartMining(round_index){
-	// var network = require('trustnote-pow-common/p2p/network.js');
+	// var network = require('rng-core/p2p/network.js');
 	// if(!network.getIfMyurlClaimed()){
 	// 	return console.log(`My url is not claimed, will not mining`)
 	// }
@@ -110,8 +110,8 @@ function checkRoundAndComposeCoinbase(round_index) {
 		return console.log(`Last Round Index is ${ last_round_index }, will not mining`)
 	}
 
-	var network = require('trustnote-pow-common/p2p/network.js');
-	var composer = require('trustnote-pow-common/unit/composer.js');
+	var network = require('rng-core/p2p/network.js');
+	var composer = require('rng-core/unit/composer.js');
 
 	const callbacks = composer.getSavingCallbacks({
 		ifNotEnoughFunds: onError,
@@ -180,7 +180,7 @@ setTimeout(function(){
 		supernode.readSingleWallet(db, function(wallet){
 			// global
 			wallet_id = wallet;
-			var device = require('trustnote-pow-common/wallet/device.js');
+			var device = require('rng-core/wallet/device.js');
 			device.setDevicePrivateKey(devicePrivKey);
 			let my_device_address = device.getMyDeviceAddress();
 			db.query("SELECT 1 FROM extended_pubkeys WHERE device_address=?", [my_device_address], function(rows){
@@ -191,7 +191,7 @@ setTimeout(function(){
 						console.log('passphrase is incorrect');
 						process.exit(0);
 					}, 1000);
-				require('trustnote-pow-common/wallet/supernode.js'); // we don't need any of its functions but it listens for hub/* messages
+				require('rng-core/wallet/supernode.js'); // we don't need any of its functions but it listens for hub/* messages
 				if( !conf.safe_address ) {
 					console.log('## We recommend you to set a safe address for your coin\'s safty where your coinbase rewards will be sent to.\nOther wise, the rewards will be sent to your supernode address');
 				}
@@ -208,9 +208,9 @@ setTimeout(function(){
 // The event handlers depend on the global var wallet_id being set, which is set after reading the keys
 
 eventBus.on('headless_wallet_ready', function(){
-	var network = require('trustnote-pow-common/p2p/network.js');
-	var composer = require('trustnote-pow-common/unit/composer.js');
-	var supernode = require('trustnote-pow-common/wallet/supernode');
+	var network = require('rng-core/p2p/network.js');
+	var composer = require('rng-core/unit/composer.js');
+	var supernode = require('rng-core/wallet/supernode');
 	
 	if (conf.permanent_pairing_secret)
 		db.query(
@@ -285,7 +285,7 @@ eventBus.on('headless_wallet_ready', function(){
 				oWs.close( 1000, "mandatory upgrade" );
 			}
 		}
-		var library = require('trustnote-pow-common/package.json');
+		var library = require('rng-core/package.json');
 		if (version.compareVersions(oBody.library_version, library.version) === '>' ) {
 			console.log(`*************\n***** Library: My Library version is too low.\n*************`)
 		} else if (version.compareVersions(oBody.library_version, library.version) === '<' ) {

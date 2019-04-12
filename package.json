@@ -1,21 +1,21 @@
 {
-  "name": "trustnote-pow-supernode",
-  "description": "TrustNote POW Supernode",
-  "author": "Trustnote",
+  "name": "rng-supernode",
+  "description": "RingNetwork POW Supernode",
+  "author": "RingNetwork",
   "version": "0.1.0",
   "main": "start.js",
   "keywords": [
     "supernode",
     "pow",
-    "trustnote"
+    "ringnetwork"
   ],
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/trustnote/trustnote-pow-supernode.git",
+    "url": "https://github.com/ringnetwork/rng-supernode.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/trustnote/trustnote-pow-supernode/issues"
+    "url": "https://github.com/ringnetwork/rng-supernode/issues"
   },
   "browser": {
     "request": "browser-request",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "json-rpc2": "^1.0.2",
-    "trustnote-pow-common": "git+https://github.com/trustnote/trustnote-pow-common.git",
-    "trustnote-pow-miner": "git+https://github.com/trustnote/trustnote-pow-miner.git"
+    "rng-core": "git+https://github.com/ringnetwork/rng-core.git",
+    "rng-miner": "git+https://github.com/ringnetwork/rng-miner.git"
   }
 }

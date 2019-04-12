@@ -4,7 +4,7 @@
 /**
  *	for version control
  */
-exports.clientName		= 'trustnote-pow-supernode';
+exports.clientName		= 'rng-supernode';
 exports.minClientVersion	= '1.1.0';
 
 
@@ -30,7 +30,7 @@ exports.bugs_from_email = 'bugs@example.org';
 exports.HEARTBEAT_TIMEOUT = 300*1000;
 
 exports.initial_peers = [
-    "ws://dev.mainchain.pow.trustnote.org:9193",
+    "ws://dev.mainchain.pow.ringnetwork.org:9193",
 ];
 
 exports.storage = 'sqlite';
