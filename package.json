@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "json-rpc2": "^1.0.2",
-    "rng-core": "git+https://github.com/ringnetwork/rng-core.git",
-    "rng-miner": "git+https://github.com/ringnetwork/rng-miner.git"
+    "rng-core": "git+https://github.com/ringnetwork/rng-core.git#master",
+    "rng-miner": "git+https://github.com/ringnetwork/rng-miner.git#master"
   }
 }
