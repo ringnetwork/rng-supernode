@@ -121,8 +121,14 @@ function checkRoundAndComposeCoinbase(round_index) {
 				var coinbaseReward = 0;
 				for (var j=0; j<objJoint.unit.messages[0].payload.outputs.length; j++){
 					var output = objJoint.unit.messages[0].payload.outputs[j];
-					if(output.address === my_address)
+					if(output.address === my_address){
 						coinbaseReward = parseInt(output.amount);
+						break;
+					}
+					else if(conf.coinbase_address && output.address === conf.coinbase_address){
+						coinbaseReward = parseInt(output.amount);
+						break;
+					}
 				}
 				logging.infoCoinbaseReward(objJoint.unit.round_index, my_address, coinbaseReward);
 			}
