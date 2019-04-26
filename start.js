@@ -61,21 +61,29 @@ function checkTrustMEAndStartMining(round_index){
 		conn.query("SELECT witnessed_level FROM units WHERE round_index=? AND is_stable=1 AND is_on_main_chain=1 AND pow_type=? LIMIT 1",
 		[round_index, constants.POW_TYPE_TRUSTME], function(rows){
 			if(rows.length>=1){
-				pow.obtainMiningInput(conn, round_index, function(err, input_object) {
-					conn.release();
-					if (err) {
-						// notifyAdminAboutWitnessingProblem(err)
-						return onMiningError(err);
-					}
-					else {
-						logging.infoStartMining(input_object);
-						pow.startMiningWithInputs(input_object, function(err){
+				conn.query("select 1 from units join unit_authors using(unit) where address=? and pow_type=? and round_index=?",
+				[my_address, constants.POW_TYPE_COIN_BASE, round_index], function(rows){
+					if(rows.length<=0){
+						pow.obtainMiningInput(conn, round_index, function(err, input_object) {
+							conn.release();
 							if (err) {
+								// notifyAdminAboutWitnessingProblem(err)
 								return onMiningError(err);
-							} else {
-								console.log("Mining is on going ");
+							}
+							else {
+								logging.infoStartMining(input_object);
+								pow.startMiningWithInputs(input_object, function(err){
+									if (err) {
+										return onMiningError(err);
+									} else {
+										console.log("Mining is on going ");
+									}
+								})
 							}
 						})
+					} else {
+						bMining = false;
+						conn.release();
 					}
 				})
 			}
