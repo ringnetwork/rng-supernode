@@ -392,7 +392,8 @@ eventBus.on('headless_wallet_ready', function(){
 			return byzantine.doStartPhase(proposal.unit.hp, parseInt(proposal.phase)+1);
 		}
 
-		function onTrustMeError(){
+		function onTrustMeError(err){
+			console.log("ByzantineError: " + JSON.stringify(err));
 			return byzantine.doStartPhase(proposal.unit.hp, parseInt(proposal.phase)+1);
 		}
 		const callbacks = composer.getSavingCallbacks({
