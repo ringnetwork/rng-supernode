@@ -22,6 +22,7 @@ exports.bServeAsRpc = true;
 exports.rpcInterface = '127.0.0.1';
 exports.rpcPort = 6553;
 exports.debug = false;
+exports.explorerUrl = "ws://explorer-beta2.ringnetwork.org:9194";
 
 // byzantine
 exports.IF_BYZANTINE = true;
