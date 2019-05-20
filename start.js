@@ -62,7 +62,7 @@ function checkTrustMEAndStartMining(round_index){
 		[round_index, constants.POW_TYPE_TRUSTME], function(rows){
 			if(rows.length>=1){
 				conn.query("select 1 from units join unit_authors using(unit) where address=? and pow_type=? and round_index=?",
-				[my_address, constants.POW_TYPE_COIN_BASE, round_index], function(rows){
+				[my_address, constants.POW_TYPE_POW_EQUHASH, round_index], function(rows){
 					if(rows.length<=0){
 						pow.obtainMiningInput(conn, round_index, function(err, input_object) {
 							conn.release();
