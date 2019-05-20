@@ -13,8 +13,8 @@ exports.WS_PROTOCOL = 'ws://';
 exports.pushApiProjectNumber = 0;
 exports.pushApiKey = '';
 
-exports.port = 9194;
-exports.myUrl = 'ws://127.0.0.1:9194';
+exports.port = 9195;
+exports.myUrl = 'ws://127.0.0.1:9195';
 exports.bServeAsHub = true;
 exports.bSaveJointJson = true;
 exports.bLight = false;
@@ -22,7 +22,7 @@ exports.bServeAsRpc = true;
 exports.rpcInterface = '127.0.0.1';
 exports.rpcPort = 6553;
 exports.debug = false;
-exports.explorerUrl = "ws://explorer-beta2.ringnetwork.org:9194";
+exports.explorerUrl = "ws://explorer-beta2.ringnetwork.org:9195";
 
 // byzantine
 exports.IF_BYZANTINE = true;
@@ -34,7 +34,7 @@ exports.bugs_from_email = 'bugs@example.org';
 exports.HEARTBEAT_TIMEOUT = 300*1000;
 
 exports.initial_peers = [
-    "ws://explorer-beta2.ringnetwork.org:9194",
+    "ws://explorer-beta2.ringnetwork.org:9195",
 ];
 
 exports.storage = 'sqlite';
