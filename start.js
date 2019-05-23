@@ -304,12 +304,17 @@ eventBus.on('headless_wallet_ready', function(){
 			console.log(`*************\n***** Library: ${oWs.host} library version is too low, will cancel the connection.\n*************`)
 			oWs.close( 1000, "mandatory upgrade" );
 		}
-		last_round_index = oBody.last_round_index;
 	});
 
 	eventBus.on('updated_last_round_index_from_peers', function (nLastRoundIndexFromPeers, nLastMainChainIndexFromPeers){
-		last_round_index = nLastRoundIndexFromPeers;
-		last_main_chain_index = nLastMainChainIndexFromPeers;
+		if ( last_round_index < nLastRoundIndexFromPeers )        
+		{
+			last_round_index = nLastRoundIndexFromPeers;
+		}
+		if ( last_main_chain_index < nLastMainChainIndexFromPeers )        
+		{
+			last_main_chain_index = nLastMainChainIndexFromPeers;
+		}
 	})
 
 	setInterval(function(){
