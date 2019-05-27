@@ -18,4 +18,5 @@ Ring Network dual-token model combines both ordinary token and privacy token in 
 ### Cross-Chain
 Ring Network will implement IBC (Inter-Blockchain Communication) protocol and cryptographic cross-chain Atom Exchange Protocol to break the barrier between different systems and integrate functions and resources of them. Side-chain technologies will be supported to build Layer Two.
 
+# [Testnet(beta2)](http://explorer-beta2.ringnetwork.org:8000/)
 # [Miner Manual](https://github.com/ringnetwork/docs/wiki/Getting-Started-with-Ring-Network-Links-and-Resources)
